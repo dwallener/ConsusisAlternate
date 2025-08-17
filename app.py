@@ -121,11 +121,6 @@ Task:
 6) DO NOT diagnose. This is for research. Be conservative with claims.
 """
 
-def get_api_key()
-    part1 = "EnRH032rZqu5kR1benrMSSiYN9" 
-    part2 = "c7lK85hpnjJLRyQYFC48Lm6npO"
-    part3 = "JQQJ99BFAC4f1cMXJ3w3AAABACOGf7hY"
-    return part1 + part2 + part3
 
 def call_openai(images: Dict[str,str], model: str, api_key: str) -> Dict[str, Any]:
 
@@ -134,8 +129,7 @@ def call_openai(images: Dict[str,str], model: str, api_key: str) -> Dict[str, An
     # Configuration - old
     endpoint = "https://damir-mvp-01.openai.azure.com"
     deployment = "gpt-4.1-mini"
-    subscription_key = get_api_key()
-    # subscription_key = os.getenv("AZURE_OPENAI_KEY", "EnRH032rZqu5kR1benrMSSiYN9c7lK85hpnjJLRyQYFC48Lm6npOJQQJ99BFAC4f1cMXJ3w3AAABACOGf7hY")
+    subscription_key = os.getenv("AZURE_OPENAI_KEY", "EnRH032rZqu5kR1benrMSSiYN9c7lK85hpnjJLRyQYFC48Lm6npOJQQJ99BFAC4f1cMXJ3w3AAABACOGf7hY")
     api_version = "2024-12-01-preview"
 
     model_id_used = deployment
