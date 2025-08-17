@@ -152,16 +152,20 @@ def call_openai(images: Dict[str,str], model: str, api_key: str) -> Dict[str, An
             f"snoring: {'yes' if ui_snoring else 'no'}, "
             f"tiredness: {'yes' if ui_tired else 'no'}, "
             f"high_bp: {'yes' if ui_highbp else 'no'}. "
-            "Use these values for STOP-Bang and NoSAS instead of inferring from images."
+            "Use these values for STOP-Bang and NoSAS instead of inferring from images.\n"
+            "Return only JSON matching the required schema."
         )},
         {"type": "text", "text": "Return only JSON matching the required schema."},
     ]
+
+    # Make the rule explicit in the system prompt
+    sys_msg = SYSTEM_MESSAGE + "\n7) You MUST output JSON that exactly matches SCHEMA_JSON (field names, types). Do not invent other keys or formats."
 
     resp = client.chat.completions.create(
         model=model_id_used,
         response_format={"type":"json_object"},
         messages=[
-            {"role":"system","content": SYSTEM_MESSAGE},
+            {"role":"system","content": sys_msg},
             {"role":"user","content": content}
         ],
         temperature=0.2,
@@ -274,46 +278,22 @@ if go:
                 ahi_est = round(sum(scores))
 
                 st.divider()
-                cols = st.columns(3)
-                with cols[0]:
-                    st.markdown("### Age & BMI")
-                    ar = result.get("age_years_estimate", {})
-                    br = result.get("bmi_estimate", {})
-                    st.write(f"Age (yrs): **{ar.get('min','?')}–{ar.get('max','?')}**")
-                    st.write(f"BMI: **{br.get('min','?')}–{br.get('max','?')}**")
 
-                with cols[1]:
-                    st.markdown("### Neck & Sex")
-                    nr = result.get("neck_circumference_cm_estimate", {})
-                    st.write(f"Neck circ (cm): **{nr.get('min','?')}–{nr.get('max','?')}**")
-                    st.write(f"Sex at birth (estimate): **{result.get('sex_at_birth_estimate','unknown')}**")
+                def fmt_val(val, fallback="—"):
+                    return f"**{val}**" if val not in (None, "?", "") else f"*{fallback}*"
 
-                with cols[2]:
-                    st.markdown("### Morphology (Top 3)")
-                    m = result.get("morphology", {})
-                    for i in (1,2,3):
-                        n = m.get(f"feature_{i}_name", "")
-                        v = m.get(f"feature_{i}_value", "")
-                        if n or v: st.write(f"- **{n}**: {v}")
-                    if m.get("notes"): st.caption(m.get("notes"))
+                def range_str_from(result_dict: dict, key: str) -> str:
+                    """Return 'min–max' from result_dict[key] per SCHEMA_JSON, else ''."""
+                    r = result_dict.get(key)
+                    if not isinstance(r, dict):
+                        return ""
+                    mn = r.get("min")
+                    mx = r.get("max")
+                    if mn is None or mx is None:
+                        return ""
+                    return f"{mn}–{mx}"
 
-                st.divider()
-                c1, c2 = st.columns(2)
-                with c1:
-                    st.markdown("### NoSAS")
-                    ns = result.get("nosas", {})
-                    st.write(f"Score: **{ns.get('score','?')}**")
-                    st.write(f"Risk: **{ns.get('risk_category','?')}**")
-                    if ns.get("explanation"):
-                        st.caption(ns["explanation"])
-                with c2:
-                    st.markdown("### STOP‑Bang (Estimated Range)")
-                    sb = result.get("stopbang", {})
-                    st.write(f"Estimated range: **{sb.get('min_score','?')}–{sb.get('max_score','?')}**")
-                    st.write(f"If low assumptions → **{sb.get('category_low_assumption','?')}**")
-                    st.write(f"If high assumptions → **{sb.get('category_high_assumption','?')}**")
-                    if sb.get("assumptions"):
-                        st.caption(sb["assumptions"])
+                # --- Display ---
 
                 st.divider()
                 st.markdown("### Preliminary AHI (heuristic)")
