@@ -59,6 +59,8 @@ Streamlit handles virtually all aspects of hosting python code. Honestly, it's c
 
 The learnings from above should raise an obvious question - since you can now "talk" with all the frontier models. Yes, I tried this. Yes, it works, based on a limited number of samples. Yes, absolutely, this path should also be pursued for Snoralyzer. It would take literally 10 minutes to put up a site that does this...there is IMO no longer any point at all in pursuing a custom-trainined model for this.
 
+The work-in-progress code for localized training is in 'snoralyzer-wip'. The audio files are too large for repo storage, they will have to be fetched separately from the link provided earlier. There is code for moving between the format in the dataset and audio-useable.
+
 # Other links of interest:
 
 Contains the pricing/costing model along with Monte Carlo simulation:
@@ -68,6 +70,7 @@ https://github.com/dwallener/ConsusisShareable
 PSG/Audio recordings (1200 hours, x2) for future Snorealyzer work:
 
 https://www.kaggle.com/datasets/bryandarquea/psg-audio-apnea-audios
+
 
 
 
