@@ -50,5 +50,7 @@ Streamlit handles virtually all aspects of hosting python code. Honestly, it's c
 # Other repos of interest:
 
 Contains the pricing/costing model along with Monte Carlo simulation:
+
 https://github.com/dwallener/ConsusisShareable
+
 
