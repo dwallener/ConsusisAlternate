@@ -30,7 +30,9 @@ This was NOT possible to do well when I started working on Consusis - training m
    and give their qualitative values (e.g., 'thick neck', 'retrognathia/mandibular retrusion', 'crowded oropharynx', 'midface hypoplasia', etc.).
 ```
 
-That, frankly, blew my mind. Because there is NO WAY someone at OpenAI decided to add morphology for apnea to the GPT4+ training dataset. Which means it figured out how to do this simply by reading the published papers. This raises so many questions...
+That, frankly, blew my mind. Because there is NO WAY someone at OpenAI decided to add morphology for apnea to the GPT4+ training dataset. Which means it figured out how to do this simply by reading the published papers. And it is, again, doing it at least as well as a reasonable-size, custom-trained transformer/ML model can do it. This raises so many questions...
+
+Regarding AHI: the code used a simple method for AHI prediction. Each component - NoSAS, StopBang, Morphology - contributes a point. AHI has four levels of severity - none, light, medium, high - the scores map to those values from 0 to 3. 
 
 # Usage
 
@@ -52,5 +54,6 @@ Streamlit handles virtually all aspects of hosting python code. Honestly, it's c
 Contains the pricing/costing model along with Monte Carlo simulation:
 
 https://github.com/dwallener/ConsusisShareable
+
 
 
