@@ -45,6 +45,7 @@ To use this in a field setting requires:
 - On Streamlit account, create a new app and link it to the private repo
 - > With a private account, there are some credentials to take care of, it's straightforward
 - Create and link OpenAI (or xAI etc) developer/API account and link credentials in the python code
+- Streamlit provides a public direct link to the app
 
 Optional:
 
@@ -65,6 +66,7 @@ https://github.com/dwallener/ConsusisShareable
 PSG/Audio recordings (1200 hours, x2) for future Snorealyzer work:
 
 https://www.kaggle.com/datasets/bryandarquea/psg-audio-apnea-audios
+
 
 
 
