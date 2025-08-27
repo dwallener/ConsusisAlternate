@@ -34,6 +34,8 @@ That, frankly, blew my mind. Because there is NO WAY someone at OpenAI decided t
 
 Regarding AHI: the code used a simple method for AHI prediction. Each component - NoSAS, StopBang, Morphology - contributes a point. AHI has four levels of severity - none, light, medium, high - the scores map to those values from 0 to 3. 
 
+Regarding LLMs: this has only been tested with ChatGPT. The latest xAI is also a very promising candidate for this.
+
 # Usage
 
 To use this in a field setting requires:
@@ -42,6 +44,7 @@ To use this in a field setting requires:
 - Create Streamlit account
 - On Streamlit account, create a new app and link it to the private repo
 - > With a private account, there are some credentials to take care of, it's straightforward
+- Create and link OpenAI (or xAI etc) developer/API account and link credentials in the python code
 
 Optional:
 
@@ -49,11 +52,20 @@ Optional:
 
 Streamlit handles virtually all aspects of hosting python code. Honestly, it's close to magic. 
 
-# Other repos of interest:
+# Note on Snorealyzer:
+
+The learnings from above should raise an obvious question - since you can now "talk" with all the frontier models. Yes, I tried this. Yes, it works, based on a limited number of samples. Yes, absolutely, this path should also be pursued for Snoralyzer. It would take literally 10 minutes to put up a site that does this...there is IMO no longer any point at all in pursuing a custom-trainined model for this.
+
+# Other links of interest:
 
 Contains the pricing/costing model along with Monte Carlo simulation:
 
 https://github.com/dwallener/ConsusisShareable
+
+PSG/Audio recordings (1200 hours, x2) for future Snorealyzer work:
+
+https://www.kaggle.com/datasets/bryandarquea/psg-audio-apnea-audios
+
 
 
 
