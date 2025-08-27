@@ -23,7 +23,9 @@ Task:
 6) DO NOT diagnose. This is for research. Be conservative with claims.
 ```
 
-This was NOT possible to do well when I started working on Consusis - training my own was the only feasible option. What's more interesting is that this, now, also works:
+This was NOT possible to do well when I started working on Consusis - training my own was the only feasible option. 'schema_json' is defined in the code itself - it is self-contained and extensible.
+
+What's more interesting is this, now, also works:
 
 ```
 2) Identify the three most important morphological features related to obstructive sleep apnea (OSA) visible in these images,
@@ -66,6 +68,7 @@ https://github.com/dwallener/ConsusisShareable
 PSG/Audio recordings (1200 hours, x2) for future Snorealyzer work:
 
 https://www.kaggle.com/datasets/bryandarquea/psg-audio-apnea-audios
+
 
 
 
