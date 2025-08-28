@@ -127,9 +127,9 @@ def call_openai(images: Dict[str,str], model: str, api_key: str) -> Dict[str, An
     from openai import AzureOpenAI
 
     # Configuration - old
-    endpoint = "https://damir-mvp-01.openai.azure.com"
+    endpoint = "<your endpoint goes here>"
     deployment = "gpt-4.1-mini"
-    subscription_key = os.getenv("AZURE_OPENAI_KEY", "EnRH032rZqu5kR1benrMSSiYN9c7lK85hpnjJLRyQYFC48Lm6npOJQQJ99BFAC4f1cMXJ3w3AAABACOGf7hY")
+    subscription_key = os.getenv("AZURE_OPENAI_KEY", "<your key goes here>")
     api_version = "2024-12-01-preview"
 
     model_id_used = deployment
