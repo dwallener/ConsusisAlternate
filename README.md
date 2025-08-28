@@ -71,6 +71,17 @@ PSG/Audio recordings (1200 hours, x2) for future Snorealyzer work:
 
 https://www.kaggle.com/datasets/bryandarquea/psg-audio-apnea-audios
 
+Streamlit Cloud: fastest way to deploy to "any" device
+
+https://streamlit.io/cloud
+
+OpenAI Developer:
+
+https://platform.openai.com/docs/overview
+
+Azure AI Credits:
+
+https://portal.startups.microsoft.com/signup
 
 
 
